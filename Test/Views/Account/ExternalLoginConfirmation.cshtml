@@ -1,11 +1,11 @@
 ﻿@model Test.Models.RegisterExternalLoginModel
 @{
-    ViewBag.Title = "Registrarse";
+    ViewBag.Title = "Register";
 }
 
 <hgroup class="title">
     <h1>@ViewBag.Title.</h1>
-    <h2>Asociar su cuenta de @ViewBag.ProviderDisplayName.</h2>
+    <h2>Associate your @ViewBag.ProviderDisplayName account.</h2>
 </hgroup>
 
 @using (Html.BeginForm("ExternalLoginConfirmation", "Account", new { ReturnUrl = ViewBag.ReturnUrl })) {
@@ -13,11 +13,11 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Formulario de asociación</legend>
+        <legend>Association Form</legend>
         <p>
-            Se ha autenticado correctamente con <strong>@ViewBag.ProviderDisplayName</strong>.
-            Escriba un nombre de usuario para este sitio y haga clic en el botón Confirmar para finalizar
-            el inicio de sesión.
+            You've successfully authenticated with <strong>@ViewBag.ProviderDisplayName</strong>.
+            Please enter a user name for this site below and click the Confirm button to finish
+            logging in.
         </p>
         <ol>
             <li class="name">
@@ -27,7 +27,7 @@
             </li>
         </ol>
         @Html.HiddenFor(m => m.ExternalLoginData)
-        <input type="submit" value="Registrarse" />
+        <input type="submit" value="Register" />
     </fieldset>
 }
 

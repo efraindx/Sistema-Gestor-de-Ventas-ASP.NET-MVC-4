@@ -1,0 +1,117 @@
+﻿@model Test.Models.Product
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div id="divRegistrarProducto">
+
+<h2>Agregar nuevo articulo</h2>
+
+@using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset id="fieldProducts">
+        <legend>Product</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CategoryID, "Categoría:")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("CategoryID", String.Empty)
+            @Html.ValidationMessageFor(model => model.CategoryID)
+        </div>
+
+           <div class="divTitulo" id="divVerde">    
+                    <div class="divEnumeracion">
+                        <p class="num">1</p>
+                    </div>
+                   <p class="encabezado">Define un titulo que describa tu producto</p>
+             </div>
+            <br />
+             <div class="editor-label">
+                @Html.LabelFor(model => model.Title, "Título:")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.Title)
+                @Html.ValidationMessageFor(model => model.Title)
+            </div>
+
+            <div class="divTitulo" id="divVerde2">    
+                    <div class="divEnumeracion">
+                        <p class="num">2</p>
+                    </div>
+                   <p class="encabezado">Describe tu producto</p>
+             </div>
+            <br />
+             <label>Condicion:</label>
+            <div class="editor-field">
+                @Html.DropDownList("ProductConditionID", String.Empty)
+                @Html.ValidationMessageFor(model => model.ProductConditionID)
+            </div>
+
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Description, "Descripcion:")
+            </div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.Description)
+                @Html.ValidationMessageFor(model => model.Description)
+            </div>
+
+        
+            <div class="divTitulo">    
+                    <div class="divEnumeracion">
+                        <p class="num">3</p>
+                    </div>
+                   <p class="encabezado">Sube fotos de tu producto</p>
+             </div>
+            <br />
+
+        <div class="hero-unit filler" id="divFotos"> 
+               Sube una foto:
+            <input type="file" name="file" id="file" />
+        </div>
+
+         <div class="divTitulo" id="divBlack">    
+                    <div class="divEnumeracion">
+                        <p class="num">4</p>
+                    </div>
+                   <p class="encabezado">Establece un precio para tu articulo:</p>
+         </div>
+         <br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Price, "Precio:")
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Price)
+            @Html.ValidationMessageFor(model => model.Price)
+        </div>
+
+          <div class="divTitulo" id="divBlue">    
+                    <div class="divEnumeracion">
+                        <p class="num">5</p>
+                    </div>
+                   <p class="encabezado">Decide como quieres que te paguen:</p>
+         </div>
+         <br />
+           <label>Aceptar pagos con PayPal al Correo Electronico:</label>
+        <div class="editor-field">
+           <input type="text" name="correo"/>
+        </div>
+
+        <p>
+            <input class="btn btn-warning" type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

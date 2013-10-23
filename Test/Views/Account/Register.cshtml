@@ -1,34 +1,37 @@
 ﻿@model Test.Models.RegisterModel
 @{
-    ViewBag.Title = "Registrarse";
+    ViewBag.Title = "Regístrate";
+    Layout = "~/Views/Shared/_RegisterLayout.cshtml";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Cree una cuenta nueva.</h2>
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+    @Html.ValidationSummary(true)
 
     <fieldset>
         <legend>Formulario de registro</legend>
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName)<br />
+                @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)<br />
+                @Html.ValidationMessageFor(m => m.Password)
             </li>
             <li>
                 @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)
+                @Html.PasswordFor(m => m.ConfirmPassword)<br />
+                @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </li>
         </ol>
-        <input class="btn btn-success" type="submit" value="Registrarse" />
+        <input class="btn btn-danger" type="submit" value="Registrarse" />
     </fieldset>
 }
 

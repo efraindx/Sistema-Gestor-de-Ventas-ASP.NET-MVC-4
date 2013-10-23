@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,7 +13,6 @@ namespace Test.Controllers
         public ActionResult Index()
         {
             ViewBag.Message = "Articulos mas destacados";
-
             return View();
         }
 
@@ -28,12 +28,6 @@ namespace Test.Controllers
             ViewBag.Message = "Página de contacto.";
 
             return View();
-        }
-
-        [HttpGet]
-        public ActionResult FormularioMethod()
-        {
-            return View();        
         }
     }
 }

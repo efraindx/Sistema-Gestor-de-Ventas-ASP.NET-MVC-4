@@ -1,15 +1,15 @@
 ﻿<!DOCTYPE html>
-<html lang="es">
+<html lang="en">
     <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
-        <link href="Images/icono.png" rel="shortcut icon" type="image/x-icon" />
+        <link href="@Url.Content("~/Images/icono.png")" rel="shortcut icon" type="image/x-icon" />
         <meta name="viewport" content="width=device-width" />
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
     </head>
-    <body class="sz1200 featured-page stdln en_US_MAIN">
+    <body>
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
@@ -26,26 +26,47 @@
                 </div>
             </div>
         </header>
+
         <div id="body">
             <div class="navbar">
                  <div class="navbar-inner" id="barraNavegar">
                      <form class="navbar-search pull-lef">
                          <input type="text" placeholder="Buscar..." id="buscador"/>
-                         <input type="submit" value="Buscar" class="btn btn-success" id="btnBuscar"/>
+                         <input type="submit" value="Buscar" class="btn btn-info" id="btnBuscar"/>
                      </form>
-                        <ul class="nav">
-                          <li><a href="#">Inicio</a></li>
-                          <li><a href="#">Vender Articulo</a></li>
-                          <li><a href="#">Sobre Nosotros</a></li>
+                        <ul class="nav" id="navBar">
+                          <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                          <li>@Html.ActionLink("Vender Articulo", "Create", "Product")</li>
+                          <li>@Html.ActionLink("Sobre nosotros", "About", "Home")</li>
                           <li><a href="#">Sugerencias</a></li>
                         </ul>
                  </div>
             </div>
-            <section>
-                @RenderBody()
-            </section>
+
+            <div class="container">
+                <div class="row">
+                    <div class="span3 bs-docs-sidebar" id="divCategorias">
+                        <ul class="nav nav-tabs nav-pills nav-stacked">
+                            <li class="active"><a href="#"><i class="icon-chevron-right"></i>Categorias</a></li>
+                            <li><a href="#aasd"><i class="icon-chevron-right"></i>Carros</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>C&aacute;maras y Fotos</a></li> 
+                            <li><a href="#"><i class="icon-chevron-right"></i>Computadoras</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>Equipos Electr&oacute;nicos</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>Televisores y videos</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>Video Juegos</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+                <section class="content-wrapper main-content clear-fix">
+                    <div id="divCuerpo">
+                         @RenderBody()
+                    </div>
+                </section>
         </div>
-        <footer class="navbar navbar-inverse navbar-fixed-top" id="barraInferior">
+
+        <footer>
             <div class="content-wrapper">
                 <div class="float-left">
                     <p>&copy; @DateTime.Now.Year De´ Compras NET</p>
@@ -54,5 +75,11 @@
         </footer>
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
+        <script>
+            $('.carousel').carousel({
+                 interval: 2000,
+                 pause: false
+            })
+        </script>
     </body>
 </html>

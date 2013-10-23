@@ -1,15 +1,14 @@
 ﻿@model Test.Models.LoginModel
-
 @{
     ViewBag.Title = "Iniciar sesión";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
 }
 
 <hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
+    <h1>@ViewBag.Title</h1>
 </hgroup>
 
-<section id="loginForm">
-<h2>Utilice una cuenta local para iniciar sesión.</h2>
+<section>
 @using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
@@ -34,15 +33,7 @@
         </ol>
         <input class="btn btn-primary" type="submit" value="Iniciar sesión" />
     </fieldset>
-    <p>
-        @Html.ActionLink("Register", "Register") si no tiene ninguna cuenta.
-    </p>
 }
-</section>
-
-<section class="social" id="socialLoginForm">
-    <h2>Usar otro servicio para iniciar sesión.</h2>
-    @Html.Action("ExternalLoginsList", new { ReturnUrl = ViewBag.ReturnUrl })
 </section>
 
 @section Scripts {

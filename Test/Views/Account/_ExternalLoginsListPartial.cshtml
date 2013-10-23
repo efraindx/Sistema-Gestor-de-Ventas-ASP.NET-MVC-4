@@ -1,5 +1,9 @@
 ﻿@model ICollection<AuthenticationClientData>
 
+@{
+    int count = 1;
+}
+
 @if (Model.Count == 0)
 {
     <div class="message-info">
@@ -17,7 +21,8 @@ else
         <p>
         @foreach (AuthenticationClientData p in Model)
         {
-            <button type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Inicie sesión con su cuenta de @p.DisplayName">@p.DisplayName</button>
+           <button id="iconPage" type="submit" name="provider" value="@p.AuthenticationClient.ProviderName" title="Inicie sesión con su cuenta de @p.DisplayName"><img src="@p.ExtraData["Icon" + count]"/></button>
+            count++;
         }
         </p>
     </fieldset>

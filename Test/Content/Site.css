@@ -93,6 +93,13 @@ h5, h6 {
     max-width: 960px;
 }
 
+.Icono {
+    background: url("../Images/icono2.png") no-repeat;
+    width:500px;
+    height:500px;
+    display:block;
+}
+
 .Logo {
     background: url("../Images/logo.png") no-repeat;
     width:245px;
@@ -106,6 +113,80 @@ h5, h6 {
     margin:auto;
 }
 
+#formularioRegistro {
+    margin-top:50px;
+    width:400px;
+    height:330px;
+}
+
+#formServicios {
+    position:absolute;
+    top:100px;
+    left:630px;
+    height:260px;
+    width:400px;
+}
+
+#formularioLogin {
+    margin-top:50px;
+    width:400px;
+    height:260px;
+    margin-left:100px;
+}
+
+#divLoginPartial {
+    margin-right:100px;
+}
+
+#divIcono {
+    margin-left:430px;
+    margin-top:10px;
+    width:200px;
+    height:100px;
+    overflow:hidden;
+}
+
+ .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+#bodyRegisterAndLoginLayout {
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+#divCategorias {
+    width:200px;
+    position:absolute;
+    top:200px;
+    left:140px;
+}
+
+#fieldSetRegistro {
+}
+
 #barraNavegar {
     width:950px;
     height:60px;
@@ -117,15 +198,163 @@ h5, h6 {
     margin-top:3px;   
 }
 
+#iconPage {
+    background:white;
+    border:0px none;
+}
+		
+#iconPage:hover{
+    cursor:pointer;
+}
+
+#indicators {
+   width:600px;
+   position:absolute;
+   left:100px;
+}
+
 #btnBuscar {
     height:30px;   
+    padding-top:5px;
     margin-top:-6px;
-    
+    padding:5px
+}
+
+.slide {
+    width:500px;
+    height:200px;
+    float:left;
+}
+
+.num {
+    color:white;
+    margin-left:8px;
+    margin-top:4px;
+    -webkit-transform:rotate(350deg);
+    font-size:20px; 
+}
+
+.encabezado {
+    margin-left:40px;   
+    padding:5px;
+}
+
+.carousel-indicators {
+    background:#cccccc; 
+}
+
+#carouselNavigators {
+    position:absolute;
+    width:700px;
+    left:4px;
+    top:80px;
+}
+
+#navBar {
+    margin-top:5px;
+    margin-left:30px;
+    height:0px;
+}
+
+#divContenedor {
+     border:1px solid black;
+     width:720px;
+     min-height:200px;
+}
+
+#slider {
+    width:700px;
+    height:200px;
+}
+
+#tituloBarra {
+    margin-left:270px;
+}
+
+#barraArticulos {
+    margin-top:250px;
+    width:720px;
+    height:50px;
+}
+
+#barraMuestra {
+    background:green;
+    background-color:green;
+}
+
+.divRegistro {
+    background:green;
+    width:725px;
+    height:50px;
+}
+
+#myCarousel {
+    width:750px;
+}
+
+#fieldProducts {
+    margin-left:20px;
+}
+
+.divEnumeracion {
+    border:solid black;
+    border-radius:5px;
+    width:35px;
+    position:absolute;
+    height:25px;
+     -webkit-transform:rotate(350deg);
+}
+
+
+.divTitulo {
+    border-radius:5px;
+    background:red;
+    height:30px;
+    width:670px;
+    color:white;
+    font-size:20px;
+    font-family:'Times New Roman';   
+}
+
+#divRegistrarProducto {
+    border:1px solid #cccccc;
+    border-radius:10px;
+    width:720px;
+}
+
+#divCuerpo {
+    width:750px;
+    min-height:500px;
+    margin-left:250px;
+    overflow:hidden;
+    border: none;
+}
+
+#divBlue {
+    background:blue;
+}
+
+#divBlack {
+    background:black;
+}
+
+#divVerde {
+    background:green;
+}
+
+
+#divVerde2 {
+    background:green;
+}
+
+#divFotos {
+    width:510px;
+    height:5px;
 }
 
 #barraInferior {
     position:fixed;
-    top:300px;
+    top:600px;
     background-color:black;
     color:white;
 }
@@ -146,7 +375,8 @@ header .content-wrapper {
 
 footer {
     clear: both;
-    background-color: #e2e2e2;
+    background-color: black;
+    color:white;
     font-size: .8em;
     height: 100px;
 }
@@ -310,18 +540,16 @@ aside {
         width: auto;
     }
 
-#socialLoginForm {
-    margin-left: 40px;
-    float: left;
-    width: 40%;
-}
-
     #socialLoginForm h2 {
         margin-bottom:  5px;
     }
 
 #socialLoginList button {
     margin-bottom: 12px;
+}
+
+#divEspacio {
+    height:50px;
 }
 
 #logoutForm {
@@ -664,18 +892,6 @@ tr.pager td {
     input {
         width: 90%;
     }
-
-    /* login page */
-    #loginForm {
-        border-right: none;
-        float: none;
-        width: auto;
-    }
-
-        #loginForm .validation-error {
-            display: block;
-            margin-left: 15px;
-        }
 
     #socialLoginForm {
         margin-left: 0;
