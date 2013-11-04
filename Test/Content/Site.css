@@ -177,14 +177,17 @@ h5, h6 {
     background-color: #f5f5f5;
 }
 
-#divCategorias {
-    width:200px;
-    position:absolute;
-    top:200px;
-    left:140px;
+#divPRecio {
+    background-color:#999;
 }
 
-#fieldSetRegistro {
+.fontDescripcion {
+    font-family:'Times New Roman';
+}
+
+.precio {
+    color:red;
+    font-size:20px;
 }
 
 #barraNavegar {
@@ -226,6 +229,17 @@ h5, h6 {
     float:left;
 }
 
+.divImagen {
+   border:2px solid #cccccc;
+   width:200px;
+   height:200px;
+}
+
+    .divImagen img {
+        width:100%;
+        height:100%;
+    }
+
 .num {
     color:white;
     margin-left:8px;
@@ -250,16 +264,15 @@ h5, h6 {
     top:80px;
 }
 
-#navBar {
-    margin-top:5px;
-    margin-left:30px;
-    height:0px;
+#divCategorias {
+    position:absolute;
+    top:200px;
 }
 
 #divContenedor {
-     border:1px solid black;
      width:720px;
      min-height:200px;
+     float:left;
 }
 
 #slider {
@@ -272,7 +285,7 @@ h5, h6 {
 }
 
 #barraArticulos {
-    margin-top:250px;
+    margin-top:190px;
     width:720px;
     height:50px;
 }
@@ -280,6 +293,7 @@ h5, h6 {
 #barraMuestra {
     background:green;
     background-color:green;
+    margin-top:220px;
 }
 
 .divRegistro {
@@ -290,10 +304,12 @@ h5, h6 {
 
 #myCarousel {
     width:750px;
+    position:absolute;
+    top:202px;
 }
 
 #fieldProducts {
-    margin-left:20px;
+    margin-left:20px;  
 }
 
 .divEnumeracion {
@@ -325,13 +341,101 @@ h5, h6 {
 #divCuerpo {
     width:750px;
     min-height:500px;
-    margin-left:250px;
+    margin-left:390px;
     overflow:hidden;
     border: none;
 }
 
+#divComments {
+    width:230px;
+    margin-left:60px;
+    border-radius:20px;
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+    min-height:200px;
+    left:160px;
+    margin-top:0px;
+    border:1px solid black;
+    position:absolute;
+    top:0px;
+}
+
+    #divComments label, p {
+        margin-left:10px;
+    }
+
+#divInfo {
+    width:500px;
+    height:200px;
+    overflow:auto;
+    top:300px;
+    left:400px;
+    position:absolute;
+    border-radius:20px;
+    background-color:LightBlue ;
+    border:1px solid black;
+}
+
+#divProgress {
+    width:50px;
+    height:10px;
+    margin-top:20px;
+}
+
+#tblPorcentajes {
+    margin-left:10px;
+    width:100px;
+}
+
+#divProgress2 {
+    width:50px;
+    height:10px;
+    margin-top:20px;
+}
+
+#divProgress3 {
+    width:50px;
+    height:10px;
+    margin-top:20px;
+}
+
+#divProgress4 {
+    width:50px;
+    height:10px;
+    margin-top:20px;
+}
+
+#divProgress5 {
+    width:50px;
+    height:10px;
+    margin-top:20px;
+}
+
+#divDescripcion {
+    border:1px solid #cccccc;
+    min-height:100px;
+    border-radius:10px;
+    width:600px;
+}
+
+#divDescripcion {
+    border:1px solid #cccccc;
+    min-height:100px;
+    border-radius:10px;
+    width:600px;
+}
+
 #divBlue {
     background:blue;
+}
+
+.h2 {
+   margin-top:0px;
+}
+
+.divSombreado {
+    background-color:burlywood;
+    border-radius:10px;
 }
 
 #divBlack {
@@ -548,6 +652,28 @@ aside {
     margin-bottom: 12px;
 }
 
+#btnCerrar {
+    margin-left:455px;
+    border-radius:20px;
+    top:0px;
+    position:absolute;
+}
+
+#rating {
+    opacity:0;
+    height:0px;
+}
+
+#divBasic2 {
+    margin-left:350px;
+}
+
+#divRadios {
+    border:1px solid black;
+    width:250px;
+    height:50px;
+}
+
 #divEspacio {
     height:50px;
 }
@@ -568,6 +694,31 @@ aside {
 .contact iframe {
     border: 1px solid #333;
     margin: 5px 0 0 10px;
+}
+
+.cursivo {
+    font-family:'Times New Roman';
+    color:#999;
+    font-style:italic;
+}
+
+.timesRoman {
+    font-family:'Times New Roman';
+}
+
+.basic3:hover {
+    cursor:pointer;
+}
+
+.linkButton {
+    display:block;
+    width:150px;
+    height:150px;
+}
+
+.inputComment {
+    width:300px;
+    height:100px;
 }
 
 /* forms */
@@ -598,6 +749,39 @@ label {
 
 label.checkbox {
     display: inline;
+}
+
+.divComentario {
+    border:1px solid #ccc;
+    width:500px;
+    border-radius:10px;
+    min-height:100px;
+}
+
+.interlineado {
+   border:1px solid #ccc;
+   width:500px;
+   border-radius:10px;
+   min-height:100px;
+   background:#d3dce0;
+}
+
+.divProduct {  
+    width:230px;
+    float:left;
+}
+
+.divComentario h4{
+    margin:20px;
+}
+
+
+.divComentario label {
+    margin-left:350px;
+}
+
+.divComentario p {
+    margin-left:20px;
 }
 
 input, textarea {

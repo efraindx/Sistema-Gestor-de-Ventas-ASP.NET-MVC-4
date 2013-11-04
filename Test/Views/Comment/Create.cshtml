@@ -1,0 +1,259 @@
+﻿@model Test.Models.ProductReview
+
+@{
+    int productID = ViewBag.ProductID;
+    Test.Models.TestContext db = new Test.Models.TestContext();
+    var Last3Comments = db.ProductsReviews.OrderByDescending(p => p.Id).Take(3).ToList();
+    double countComments = db.ProductsReviews.Where(p => p.ProductID == productID).Count();
+    int countRating20 = db.ProductsReviews.Where(p => p.Rating == 20).GroupBy(p => p.User).Count();
+    int countRating16 = db.ProductsReviews.Where(p => p.Rating == 16).GroupBy(p => p.User).Count();
+    int countRating12 = db.ProductsReviews.Where(p => p.Rating == 12).GroupBy(p => p.User).Count();
+    int countRating8 = db.ProductsReviews.Where(p => p.Rating == 8).GroupBy(p => p.User).Count();
+    int countRating4 = db.ProductsReviews.Where(p => p.Rating == 4).GroupBy(p => p.User).Count();
+
+    int totalRatings = countRating20 + countRating16 + countRating12 + countRating8 + countRating4;
+    
+    double porFirst = (countRating20 / countComments) * 100;
+    double valueFirst = Math.Round(porFirst, 2);
+    string val = Convert.ToString(valueFirst).Replace(",", ".");
+    string firstProgress = "width:" + val + "%";
+
+    double porSecond = (countRating16 / countComments) * 100;
+    double valueSecond = Math.Round(porSecond, 2);
+    string val2 = Convert.ToString(valueSecond).Replace(",", ".");
+    string secondProgress = "width:" + val2 + "%";
+
+    double porThird = (countRating12 / countComments) * 100;
+    double valueThird = Math.Round(porThird, 2);
+    string val3 = Convert.ToString(valueThird).Replace(",", ".");
+    string thirdProgress = "width:" + val3 + "%";
+    
+    double por4 = (countRating8 / countComments) * 100;
+    double value4 = Math.Round(por4, 2);
+    string val4 = Convert.ToString(value4).Replace(",", ".");
+    string FourProgress = "width:" + val4 + "%";
+
+    double por5 = (countRating4 / countComments) * 100;
+    double value5 = Math.Round(por5, 2);
+    string val5 = Convert.ToString(value5).Replace(",", ".");
+    string FiveProgress = "width:" + val5 + "%";
+
+    double ratingProduct = ((countRating20 * 20) + (countRating16 * 16) + (countRating12 * 12) + (countRating8 * 8) +
+        (countRating4 * 4)) / totalRatings;
+    double rating = Math.Round(ratingProduct, 2);
+    }
+
+<link rel="stylesheet" href="~/Content/jRating.jquery.css" type="text/css">
+<script type="text/javascript" src="~/Scripts/jquery.js"></script>
+<script type="text/javascript" src="~/Scripts/jRating.jquery.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>ProductReview</legend>
+
+<h2>@ViewBag.Product.Title</h2>
+ <p>
+     Publicado el: @ViewBag.Product.DateOfPublication <br />
+     por: <b>@ViewBag.Product.Owner</b>
+ </p>
+
+<fieldset>
+    
+    <legend>Product</legend>
+    <div class="divImagen">
+        <img src="@ViewBag.ImageProduct.ImagePath" />
+    </div>
+
+    <div id="divInfo">
+        <table id="tblPorcentajes">
+            <tr>
+                <td><b>@rating de 20 estrellas</b></td>
+            </tr>
+            <tr>
+                <td>20 Estrellas:</td>
+                <td>
+                        <div id="divProgress" title="@val%"  class="progress progress-striped active">
+                            <div class="bar" style="@firstProgress">
+                            </div>
+                        </div>
+                </td>
+                <td>
+                    (@countRating20)
+                </td>
+            </tr>
+            <tr>
+                <td>16 Estrellas:</td>
+                <td>
+                    <div class="divProgress2">
+                         <div id="divProgress2" title="@val2%"  class="progress progress-striped active">
+                                <div class="bar" style="@secondProgress">
+                                </div>
+                         </div>
+                    </div>
+                </td>
+                <td>
+                    (@countRating16)
+                </td>
+            </tr>
+            <tr>
+                <td>12 Estrellas:</td>
+                <td>
+                     <div id="divProgress3" title="@val3%"  class="progress progress-striped active">
+                            <div class="bar" style="@thirdProgress">
+                            </div>
+                     </div>
+                </td>
+                <td>
+                    (@countRating12)
+                </td>
+            </tr>
+            <tr>
+                <td>8 Estrellas:</td>
+                <td>
+                     <div id="divProgress4" title="@val4%"  class="progress progress-striped active">
+                            <div class="bar" style="@FourProgress">
+                            </div>
+                     </div>
+                </td>
+                <td>
+                    (@countRating8)
+                </td>
+            </tr>
+            <tr>
+                <td>4 Estrellas:</td>
+                <td>
+                     <div id="divProgress5" title="@val5%"  class="progress progress-striped active">
+                            <div class="bar" style="@FiveProgress">
+                            </div>
+                     </div>
+                </td>
+                <td>
+                    (@countRating4)
+                </td>
+            </tr>
+       </table>
+
+            <input title="Cerrar" class="btn btn-danger" id="btnCerrar" type="button" value="X" />
+            <div id="divComments">
+                <label><b>Últimos comentarios:</b></label><br />
+                @foreach (var comment in Last3Comments)
+                {
+                    <p>
+                         <label class="timesRoman">"@comment.Comment"</label>
+                         <label class="cursivo">@comment.User</label>
+                    </p>
+                }
+                <a href="#divComentarios">Ver todos los comentarios</a>
+            </div>
+    </div>
+
+    <div class="basic3" title="@rating de 20 estrellas" data-average="@rating"></div> - <a href="#divComentarios">(@countComments comentarios)</a>
+
+    <table>
+        <tr>
+            <td class="fontDescripcion">Precio:</td>
+            <td class="precio">@ViewBag.Product.Price RD$</td>
+        </tr>
+
+        <tr>
+                <td class="fontDescripcion">Categoría:</td>
+                <td>@ViewBag.Product.Category.Name</td>
+            </tr>
+
+            <tr>
+                <td class="fontDescripcion">Condición:</td>
+                <td> @ViewBag.Product.ProductCondition.Name</td>
+            </tr>
+
+            <tr>
+    </table>
+    
+    <div id="divDescripcion">
+        <div class="divSombreado">
+            <h2 class="h2">Descripción</h2>
+        </div>
+          <p>@ViewBag.Product.Description</p>
+    </div>
+</fieldset>
+
+<div class="container">
+    <h5>Comentarios sobre este producto:</h5>
+    <div id="divComentarios">
+        @if (ViewBag.Comments.Count != 0)
+        {
+            bool clase = false;
+            foreach (var comment in ViewBag.Comments)
+            {
+                  <div class="divComentario">
+                      <label class="cursivo">@comment.Date</label>
+                      <div id="divBasic2" class="basic2" data-average="@comment.Rating"></div>
+                      <h4>@comment.User</h4>
+                      <p>@comment.Comment</p>
+                      </div><br />  
+                clase = !clase;
+            }
+        }
+        else
+        {
+            <label class="cursivo">No hay comentarios</label>
+        }
+    </div>
+</div><br />
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Comment, "Cuál es tu opinión?")
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Comment, new { @class = "inputComment", @placeholder = "Escribe tu opinión" })
+            @Html.ValidationMessageFor(model => model.Comment)
+        </div>
+            <div><br />
+                <label>Cómo calificas este producto?</label>
+                <div class="basic" data-average="4"></div><br />
+                <input type="text" id="rating" name="rating" />
+            </div>
+        <p>
+            <input class="btn btn-success" type="submit" value="Comentar" />
+        </p>
+    </fieldset><br />
+    <p>
+    @Html.ActionLink("Editar", "Edit", new { id = ViewBag.Product.ProductID }) |
+    @Html.ActionLink("Ver productos", "Index")
+</p>
+   
+}
+
+<script type="text/javascript">
+
+    $('.basic').jRating({
+        step: true,
+        length: 5,
+        canRateAgain: true,
+        nbRates: 3,
+        onClick: function (element, rate) {
+            $('#rating').prop('value', rate);
+        }
+    });
+
+    $('.basic2').jRating({
+        step: true,
+        length: 5,
+        isDisabled:true
+    });
+
+    $('.basic3').jRating({
+        step: true,
+        length: 5,
+        isDisabled: true
+    });
+
+    $('#btnCerrar').click(function () {
+        $('#divInfo').hide('fast');
+    });
+
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

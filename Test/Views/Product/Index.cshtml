@@ -1,30 +1,30 @@
 ﻿@model IEnumerable<Test.Models.Product>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Productos";
 }
 
-<h2>Index</h2>
+<h2>Mis Productos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Agregar Nuevo", "Create")
 </p>
-<table>
+<table class="table table-bordered">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Category.Name)
+            Categoría
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ProductCondition.Name)
+            Condición
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Title)
+            Título
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            Descripción
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Price)
+            Precio
         </th>
         <th></th>
     </tr>
@@ -47,11 +47,14 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ProductID })
+            @Html.ActionLink("Editar", "Edit", new { id=item.ProductID }) |
+            @Html.ActionLink("Ver Producto", "Create", "Comment", new { ProductID=item.ProductID, @class="linkButton" }, null) |
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ProductID })
+            
         </td>
+        
     </tr>
+   
 }
 
 </table>

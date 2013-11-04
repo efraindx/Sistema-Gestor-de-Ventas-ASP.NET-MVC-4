@@ -17,17 +17,17 @@
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)<br />
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Ej.:MiUsuario"})<br />
                 @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)<br />
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Tu contraseña"})<br />
                 @Html.ValidationMessageFor(m => m.Password)
             </li>
             <li>
                 @Html.LabelFor(m => m.ConfirmPassword)
-                @Html.PasswordFor(m => m.ConfirmPassword)<br />
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @placeholder = "Repíte tu contraseña"})<br />
                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
             </li>
         </ol>

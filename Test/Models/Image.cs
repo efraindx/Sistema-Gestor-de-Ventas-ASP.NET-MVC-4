@@ -13,5 +13,16 @@ namespace Test.Models
         public int ProductID { get; set; }
         public virtual Product Product { get; set; }
         public string ImagePath { get; set; }
+
+        public Image()
+        { 
+            //
+        }
+
+        public Image(int ProductID, string ImagePath)
+        {
+            this.ProductID = ProductID;
+            this.ImagePath = ImagePath;
+        }
     }
 }

@@ -142,3 +142,10 @@ C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\De
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m13.resources
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m14.resources
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m15.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m16.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m17.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m18.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m19.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m20.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m21.resources
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m22.resources

@@ -167,6 +167,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
@@ -238,17 +239,49 @@
     <Compile Include="Migrations\201310230122248_m15.Designer.cs">
       <DependentUpon>201310230122248_m15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201310291611203_m16.cs" />
+    <Compile Include="Migrations\201310291611203_m16.Designer.cs">
+      <DependentUpon>201310291611203_m16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310291654313_m17.cs" />
+    <Compile Include="Migrations\201310291654313_m17.Designer.cs">
+      <DependentUpon>201310291654313_m17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310291725107_m18.cs" />
+    <Compile Include="Migrations\201310291725107_m18.Designer.cs">
+      <DependentUpon>201310291725107_m18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310292249522_m19.cs" />
+    <Compile Include="Migrations\201310292249522_m19.Designer.cs">
+      <DependentUpon>201310292249522_m19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310300622452_m20.cs" />
+    <Compile Include="Migrations\201310300622452_m20.Designer.cs">
+      <DependentUpon>201310300622452_m20.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310300628190_m21.cs" />
+    <Compile Include="Migrations\201310300628190_m21.Designer.cs">
+      <DependentUpon>201310300628190_m21.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201310301635590_m22.cs" />
+    <Compile Include="Migrations\201310301635590_m22.Designer.cs">
+      <DependentUpon>201310301635590_m22.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ProductCondition.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ProductReview.cs" />
     <Compile Include="Models\Validator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\bg_jRatingInfos.png" />
     <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\jRating.jquery.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -306,7 +339,6 @@
     <Content Include="Global.asax" />
     <Content Include="Images\facebook.png" />
     <Content Include="Images\Geo_HP_W30_980x270_PayPal_7_20_2012_11_50_01_585.jpg" />
-    <Content Include="Images\google.png" />
     <Content Include="Images\icono.png" />
     <Content Include="Images\icono2.png" />
     <Content Include="Images\image1.jpg" />
@@ -314,20 +346,24 @@
     <Content Include="Images\image3.jpg" />
     <Content Include="Images\logo.png" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Images\microsoft.png" />
-    <Content Include="Images\twitter.png" />
+    <Content Include="Images\stars.png" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
     <Content Include="Scripts\jquery-1.7.1.js" />
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.localscroll-1.2.7-min.js" />
+    <Content Include="Scripts\jquery.scrollTo-1.4.2-min.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jRating.jquery.js" />
     <Content Include="Scripts\knockout-2.1.0.debug.js" />
     <Content Include="Scripts\knockout-2.1.0.js" />
     <Content Include="Scripts\modernizr-2.5.3.js" />
@@ -364,10 +400,14 @@
     <Content Include="Views\Shared\_RegisterLayout.cshtml" />
     <Content Include="Views\Shared\_LoginLayout.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
-    <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\Product\Create.cshtml" />
     <Content Include="Views\Product\Edit.cshtml" />
     <Content Include="Views\Product\Delete.cshtml" />
+    <Content Include="Views\Comment\Index.cshtml" />
+    <Content Include="Views\Comment\Details.cshtml" />
+    <Content Include="Views\Comment\Create.cshtml" />
+    <Content Include="Views\Comment\Edit.cshtml" />
+    <Content Include="Views\Comment\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -423,6 +463,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310230122248_m15.resx">
       <DependentUpon>201310230122248_m15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310291611203_m16.resx">
+      <DependentUpon>201310291611203_m16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310291654313_m17.resx">
+      <DependentUpon>201310291654313_m17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310291725107_m18.resx">
+      <DependentUpon>201310291725107_m18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310292249522_m19.resx">
+      <DependentUpon>201310292249522_m19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310300622452_m20.resx">
+      <DependentUpon>201310300622452_m20.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310300628190_m21.resx">
+      <DependentUpon>201310300628190_m21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201310301635590_m22.resx">
+      <DependentUpon>201310301635590_m22.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

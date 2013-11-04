@@ -36,34 +36,33 @@
                      </form>
                         <ul class="nav" id="navBar">
                           <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
-                          <li>@Html.ActionLink("Vender Articulo", "Create", "Product")</li>
-                          <li>@Html.ActionLink("Sobre nosotros", "About", "Home")</li>
+                          <li>@Html.ActionLink("Vender", "Index", "Product")</li>
+                          <li>@Html.ActionLink("Tarjetas", "Create", "Product")</li>
+                          <li>@Html.ActionLink("Sobre Nosotros", "About", "Home")</li>
                           <li><a href="#">Sugerencias</a></li>
                         </ul>
                  </div>
             </div>
 
-            <div class="container">
+            <section>
+                <div id="divCuerpo">
+                     @RenderBody()
+                </div>
+            </section>  
+
+              <div class="container">
                 <div class="row">
                     <div class="span3 bs-docs-sidebar" id="divCategorias">
                         <ul class="nav nav-tabs nav-pills nav-stacked">
-                            <li class="active"><a href="#"><i class="icon-chevron-right"></i>Categorias</a></li>
-                            <li><a href="#aasd"><i class="icon-chevron-right"></i>Carros</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>C&aacute;maras y Fotos</a></li> 
-                            <li><a href="#"><i class="icon-chevron-right"></i>Computadoras</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>Equipos Electr&oacute;nicos</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>Televisores y videos</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>Video Juegos</a></li>
+                            <li class="active"><a href="#"><i class="icon-chevron-right"></i>Categorías</a></li>
+                            <li><a href="#aasd"><i class="icon-chevron-right"></i>Cremas</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>Perfumes</a></li> 
+                            <li><a href="#"><i class="icon-chevron-right"></i>Desodorantes</a></li>
+                            <li><a href="#"><i class="icon-chevron-right"></i>Shampoo</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
-
-                <section class="content-wrapper main-content clear-fix">
-                    <div id="divCuerpo">
-                         @RenderBody()
-                    </div>
-                </section>
         </div>
 
         <footer>
@@ -77,9 +76,24 @@
         @RenderSection("scripts", required: false)
         <script>
             $('.carousel').carousel({
-                 interval: 2000,
-                 pause: false
-            })
+                interval: 2000,
+                pause: false
+            });
+
+            $('#divInfo').hide('fast');
+
+            $('.basic3').mouseover(function () {
+                $('#divInfo').show(2000);
+            });
+
+            $('#divInfo').localScroll({
+                target: 'body'
+            });
+
+            $('#body').localScroll({
+                target: 'body'
+            });
+            
         </script>
     </body>
 </html>

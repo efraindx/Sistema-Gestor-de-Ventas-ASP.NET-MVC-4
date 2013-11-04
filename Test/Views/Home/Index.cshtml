@@ -1,5 +1,7 @@
 ﻿@{
     ViewBag.Title = "D´ Compras NET";
+    Test.Models.TestContext db = new Test.Models.TestContext();
+    var images = db.Images.ToList();
 }
 
             <div id="myCarousel" class="carousel slide">
@@ -61,19 +63,14 @@
     </div>
 
     <div id="divContenedor">
-        <p>Mucho texto</p>
-        <p>Mucho texto</p>
-        <p>Mucho texto</p>
-         <p>Mucho texto</p>
-          <p>Mucho texto</p>
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>  <p>Mucho texto</p>
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>
-
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>
-         <p>Mucho texto</p>
+        @foreach (var product in ViewBag.Products) 
+        {
+            Test.Models.Image ActualImage = images.Where(i => i.ProductID == product.ProductID).FirstOrDefault();
+            <div class="divProduct">@product.Title
+                    <div class="divImagen">
+                        <img src="@ActualImage.ImagePath" />
+                    </div>
+                @product.Price
+            </div>
+        }
     </div>

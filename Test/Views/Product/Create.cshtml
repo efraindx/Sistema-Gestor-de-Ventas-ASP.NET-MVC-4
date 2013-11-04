@@ -1,12 +1,14 @@
 ﻿@model Test.Models.Product
 
-@{
-    ViewBag.Title = "Create";
+@{  
+    ViewBag.Title = "Agregar Artículo - De´ Compras NET";
 }
 
 <div id="divRegistrarProducto">
 
-<h2>Agregar nuevo articulo</h2>
+    <div class="divSombreado">
+        <h2 class="h2">Agregar nuevo producto</h2>
+    </div>
 
 @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -27,7 +29,7 @@
                     <div class="divEnumeracion">
                         <p class="num">1</p>
                     </div>
-                   <p class="encabezado">Define un titulo que describa tu producto</p>
+                   <p class="encabezado">Define un título que describa tu producto</p>
              </div>
             <br />
              <div class="editor-label">
@@ -45,14 +47,15 @@
                    <p class="encabezado">Describe tu producto</p>
              </div>
             <br />
-             <label>Condicion:</label>
+
+             <label>Condición:</label>
             <div class="editor-field">
                 @Html.DropDownList("ProductConditionID", String.Empty)
                 @Html.ValidationMessageFor(model => model.ProductConditionID)
             </div>
 
             <div class="editor-label">
-            @Html.LabelFor(model => model.Description, "Descripcion:")
+            @Html.LabelFor(model => model.Description, "Descripción:")
             </div>
             <div class="editor-field">
                 @Html.TextAreaFor(model => model.Description)
@@ -77,7 +80,7 @@
                     <div class="divEnumeracion">
                         <p class="num">4</p>
                     </div>
-                   <p class="encabezado">Establece un precio para tu articulo:</p>
+                   <p class="encabezado">Establece un precio para tu producto:</p>
          </div>
          <br />
         <div class="editor-label">
@@ -95,13 +98,13 @@
                    <p class="encabezado">Decide como quieres que te paguen:</p>
          </div>
          <br />
-           <label>Aceptar pagos con PayPal al Correo Electronico:</label>
+           <label>Aceptar pagos con PayPal al correo electrónico:</label>
         <div class="editor-field">
            <input type="text" name="correo"/>
         </div>
 
         <p>
-            <input class="btn btn-warning" type="submit" value="Create" />
+            <input class="btn btn-warning" type="submit" value="Agregar" />
         </p>
     </fieldset>
 }
@@ -109,7 +112,7 @@
 </div>
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Ver productos", "Index")
 </div>
 
 @section Scripts {

@@ -10,6 +10,10 @@ namespace Test
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
+                         "~/Scripts/jquery-{version}.min.js",
+                        "~/Scripts/jquery.scrollTo-1.4.2-min.js",
+                        "~/Scripts/jquery.localscroll-1.2.7-min.js",
+                        "~/Scripts/bootstrap.js",
                         "~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
@@ -26,7 +30,8 @@ namespace Test
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                                         "~/Content/site.css",
-                                        "~/Content/bootstrap.css"));
+                                        "~/Content/bootstrap.css",
+                                        "~/Content/bootstrap.min.css"));
 
             bundles.Add(new StyleBundle("~/Content/themes/base/css").Include(
                         "~/Content/themes/base/jquery.ui.core.css",

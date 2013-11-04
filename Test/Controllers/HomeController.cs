@@ -10,9 +10,14 @@ namespace Test.Controllers
 {
     public class HomeController : Controller
     {
+        private TestContext db = new TestContext();
         public ActionResult Index()
         {
             ViewBag.Message = "Articulos mas destacados";
+            var products = db.Products.ToList();
+            ViewBag.Products = products;
+            var images = db.Images.ToList();
+            ViewBag.ProductsImages = images;
             return View();
         }
 

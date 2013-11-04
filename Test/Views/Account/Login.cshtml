@@ -18,13 +18,16 @@
         <ol>
             <li>
                 @Html.LabelFor(m => m.UserName)
-                @Html.TextBoxFor(m => m.UserName)
+                @Html.TextBoxFor(m => m.UserName, new { @placeholder = "Usuario"}) <br />
                 @Html.ValidationMessageFor(m => m.UserName)
             </li>
             <li>
                 @Html.LabelFor(m => m.Password)
-                @Html.PasswordFor(m => m.Password)
-                @Html.ValidationMessageFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password, new { @placeholder = "Contraseña"}) <br />
+                 <div class="alert alert-error">
+                     <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>Error</strong>@Html.ValidationMessageFor(m => m.Password)
+                 </div>
             </li>
             <li>
                 @Html.CheckBoxFor(m => m.RememberMe)
