@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Test";
+}
+
+@using (Html.BeginForm("ValidateCommand", "PayPal"))
+{ 
+    <div>
+        <table id="tblEnvios">
+            <tr>
+                <td>Product Name:</td>
+                <td><input type="text" id="product" value="Visaul Studio 2013" name="product" readonly="readonly" />
+            </tr>
+            <tr>
+                <td>Total Price:</td>
+                <td><input type="text" id="totalPrice" value="14800" name="totalPrice" readonly="readonly" /></td>
+            </tr>
+        </table>
+         <input id="btnEnvios" type="submit" value=""/>
+    </div>
+}

@@ -1,6 +1,8 @@
 ﻿@model Test.Models.ProductReview
 
 @{
+    ViewBag.Title = "Detalles Producto";
+    
     int productID = ViewBag.ProductID;
     Test.Models.TestContext db = new Test.Models.TestContext();
     var Last3Comments = db.ProductsReviews.OrderByDescending(p => p.Id).Take(3).ToList();
@@ -47,6 +49,10 @@
 <script type="text/javascript" src="~/Scripts/jquery.js"></script>
 <script type="text/javascript" src="~/Scripts/jRating.jquery.js"></script>
 
+<div id="divComprar">
+   @Html.Partial("_ShopPartial")
+</div>
+
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
@@ -65,6 +71,7 @@
     <legend>Product</legend>
     <div class="divImagen">
         <img src="@ViewBag.ImageProduct.ImagePath" />
+        
     </div>
 
     <div id="divInfo">
@@ -253,6 +260,8 @@
         $('#divInfo').hide('fast');
     });
 
+    $('#product').prop('value', '@ViewBag.Product.Title');
+    $('#totalPrice').prop('value', '@ViewBag.Product.Price');
 </script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

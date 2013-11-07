@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Productos";
+    Test.Models.TestContext db = new Test.Models.TestContext();
+    var images = db.Images.ToList();
 }
 
 <h2>Mis Productos</h2>
@@ -9,52 +11,25 @@
 <p>
     @Html.ActionLink("Agregar Nuevo", "Create")
 </p>
-<table class="table table-bordered">
-    <tr>
-        <th>
-            Categoría
-        </th>
-        <th>
-            Condición
-        </th>
-        <th>
-            Título
-        </th>
-        <th>
-            Descripción
-        </th>
-        <th>
-            Precio
-        </th>
-        <th></th>
-    </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProductCondition.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.ProductID }) |
-            @Html.ActionLink("Ver Producto", "Create", "Comment", new { ProductID=item.ProductID, @class="linkButton" }, null) |
-            @Html.ActionLink("Eliminar", "Delete", new { id=item.ProductID })
-            
-        </td>
-        
-    </tr>
-   
+     Test.Models.Image ActualImage = images.Where(i => i.ProductID == item.ProductID).FirstOrDefault();
+    <div class="divProduct">
+        <div class="divImagen">
+            <a href="@Url.Action("Create", "Comment", new { ProductID=item.ProductID }, null)">
+                <img src="@ActualImage.ImagePath" />
+            </a>
+        </div>
+        <table>
+            <tr>
+                <td><b>@item.Title</b></td>
+            </tr>
+            <tr>
+                <td>@Html.ActionLink("editar", "Edit", new { id=item.ProductID })</td>
+            </tr>
+            <tr>
+                <td> @Html.ActionLink("Eliminar", "Delete", new { @class = "btn btn-danger", id=item.ProductID})</td>
+            </tr>
+        </table>
+    </div>
 }
-
-</table>

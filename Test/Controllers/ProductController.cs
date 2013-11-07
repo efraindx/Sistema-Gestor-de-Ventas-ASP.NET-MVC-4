@@ -20,7 +20,7 @@ namespace MarketPlace.Controllers
         {
             if (User.Identity.IsAuthenticated)
             {
-                var products = db.Products.Include(p => p.Category).Include(p => p.ProductCondition);
+                var products = db.Products.Include(p => p.Category).Include(p => p.ProductCondition).Where(p => p.Owner == User.Identity.Name);
                 return View(products.ToList());
             }
             else

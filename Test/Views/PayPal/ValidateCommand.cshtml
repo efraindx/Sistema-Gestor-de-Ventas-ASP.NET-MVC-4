@@ -1,0 +1,27 @@
+﻿@model Test.Models.PayPalModel
+
+<body>
+   <form action="@Model.actionURL">
+       @Html.HiddenFor(m => m.cmd)
+       @Html.HiddenFor(m => m.business)
+       @Html.HiddenFor(m => m.no_shipping)
+       @Html.HiddenFor(m => m.@return)
+       @Html.HiddenFor(m => m.cancel_return)
+       @Html.HiddenFor(m => m.notify_url)
+       @Html.HiddenFor(m => m.currency_code)
+       @Html.HiddenFor(m => m.item_name)
+       @Html.HiddenFor(m => m.amount)
+   </form>
+
+                <h3>
+                    Connecting to PayPal...
+                </h3>
+</body>
+@Scripts.Render("~/bundles/jquery")
+
+<script type="text/javascript">
+    $(this.document).ready(function () {
+        var form = $("form");
+        form.submit();
+    });
+</script>

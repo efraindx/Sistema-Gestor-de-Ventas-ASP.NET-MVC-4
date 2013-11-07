@@ -134,6 +134,12 @@ h5, h6 {
     margin-left:100px;
 }
 
+#divComprar {
+    margin-left:220px;
+    position:absolute;
+    top:350px;
+}
+
 #divLoginPartial {
     margin-right:100px;
 }
@@ -236,7 +242,7 @@ h5, h6 {
 }
 
     .divImagen img {
-        width:100%;
+        width:98%;
         height:100%;
     }
 
@@ -338,12 +344,44 @@ h5, h6 {
     width:720px;
 }
 
+#divImagen {
+    border:1px solid black;
+    width:420px;
+    background-position: 50px 101px;
+    position:absolute;
+    margin-left:300px;
+    top:220px;
+    height:250px;
+    background:url("../Images/buzon.png");
+}
+
+#btnEnvios {
+   background:url("../Images/pay.png") no-repeat;
+   width:150px;
+   height:75px;
+   position:absolute;
+   margin-top:0px;
+   left:20px;
+   top:0px;
+   border:none;
+}
+
+#tblEnvios {
+    opacity:0;
+}
+
 #divCuerpo {
     width:750px;
     min-height:500px;
     margin-left:390px;
     overflow:hidden;
-    border: none;
+}
+
+#divCuerpo2 {
+    width:750px;
+    min-height:500px;
+    margin-left:120px;
+    overflow:hidden;
 }
 
 #divComments {

@@ -34,5 +34,22 @@ namespace Test.Controllers
 
             return View();
         }
+
+        public ActionResult Suggest()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Suggest(EmailModel model)
+        {
+            Email.Send(model.FromAdress, model.Subject, model.Body);
+            return RedirectToAction("Index", "Home");
+        }
+
+        public ActionResult Test()
+        {
+            return View();
+        }
     }
 }

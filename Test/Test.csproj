@@ -169,6 +169,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
@@ -270,6 +271,8 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs" />
+    <Compile Include="Models\EmailModels.cs" />
+    <Compile Include="Models\PayPalModel.cs" />
     <Compile Include="Models\ProductCondition.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
@@ -337,6 +340,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\buzon.png" />
     <Content Include="Images\facebook.png" />
     <Content Include="Images\Geo_HP_W30_980x270_PayPal_7_20_2012_11_50_01_585.jpg" />
     <Content Include="Images\icono.png" />
@@ -346,7 +350,10 @@
     <Content Include="Images\image3.jpg" />
     <Content Include="Images\logo.png" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Images\pay.png" />
     <Content Include="Images\stars.png" />
+    <Content Include="Scripts\bootstrap-popover.js" />
+    <Content Include="Scripts\bootstrap-tooltip.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.7.1.intellisense.js" />
@@ -408,6 +415,12 @@
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Comment\Edit.cshtml" />
     <Content Include="Views\Comment\Delete.cshtml" />
+    <Content Include="Views\Home\Suggest.cshtml" />
+    <Content Include="Views\PayPal\ValidateCommand.cshtml" />
+    <Content Include="Views\PayPal\RedirectFromPayPal.cshtml" />
+    <Content Include="Views\PayPal\CancelFromPayPal.cshtml" />
+    <Content Include="Views\PayPal\NotityFromPayPal.cshtml" />
+    <Content Include="Views\Shared\_ShopPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

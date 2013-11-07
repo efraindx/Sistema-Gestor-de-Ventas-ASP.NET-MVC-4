@@ -1,0 +1,44 @@
+﻿@model Test.Models.EmailModel
+@{
+    ViewBag.Title = "Sugerencias";
+}
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+        <fieldset>
+            <legend>Sugerencias</legend>
+            <h2>Sugerencias</h2><br />
+            <div>
+                <label>Titulo:</label>
+            </div>
+            <div>
+               @Html.TextBoxFor(e => e.Subject, new { @placeholder = "Titulo"})
+               @Html.ValidationMessageFor(e => e.Subject)
+            </div><br />
+            <div>
+                <label>Correo Electronico:</label>
+            </div>
+            <div>
+               @Html.TextBoxFor(e => e.FromAdress, new { @placeholder = "Correo"})
+               @Html.ValidationMessageFor(e => e.FromAdress)
+            </div><br />
+            <div>
+                <label>Mensaje:</label>
+            </div>
+            <div>
+               @Html.TextAreaFor(e => e.Body, new { @placeholder = "Escribe el cuerpo"})
+               @Html.ValidationMessageFor(e => e.Body)
+            </div>
+
+            <input type="submit" value="Enviar" class="btn btn-success" />
+        </fieldset>
+}
+
+<div id="divImagen">
+
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")    
+}
