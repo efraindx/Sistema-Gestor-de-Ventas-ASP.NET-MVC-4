@@ -1,0 +1,6 @@
+﻿
+@using (Html.BeginForm("ViewResults", "Home", FormMethod.Post, new { id = "formSearch" }))
+{
+       <input type="text"  name="filter" autocomplete="off" placeholder="Buscar..." id="buscador" data-provide="typehead"/>
+       <input type="submit" value="Buscar" class="btn btn-info" id="btnBuscar"/>
+}

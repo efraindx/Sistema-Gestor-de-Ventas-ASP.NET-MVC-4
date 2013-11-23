@@ -6,11 +6,11 @@
 
 body {
     border-top: solid 10px #000;
-    color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
     margin: 0;
     padding: 0;
+    background:url("../Images/background.png");
 }
 
 a {
@@ -196,6 +196,10 @@ h5, h6 {
     font-size:20px;
 }
 
+.precioPortada {
+   color:red;
+}
+
 #barraNavegar {
     width:950px;
     height:60px;
@@ -236,15 +240,25 @@ h5, h6 {
 }
 
 .divImagen {
-   border:2px solid #cccccc;
+   border-radius:3px;
+   border:1px solid #cccccc;
    width:200px;
-   height:200px;
+   height:205px;
 }
 
     .divImagen img {
-        width:98%;
-        height:100%;
+        border:1px solid white;
+        width:180px;
+        height:200px;
     }
+
+.divDetalles {
+    border-radius:5px;
+    border:1px solid #cccccc;
+    height:30px;
+    border-top:none;
+    width:200px;
+}
 
 .num {
     color:white;
@@ -270,15 +284,12 @@ h5, h6 {
     top:80px;
 }
 
-#divCategorias {
-    position:absolute;
-    top:200px;
-}
 
 #divContenedor {
      width:720px;
      min-height:200px;
      float:left;
+     margin-left:15px;
 }
 
 #slider {
@@ -287,12 +298,14 @@ h5, h6 {
 }
 
 #tituloBarra {
-    margin-left:270px;
+    margin-left:250px;
+    color:black;
+    font-size:20px;
 }
 
 #barraArticulos {
     margin-top:190px;
-    width:720px;
+    width:700px;
     height:50px;
 }
 
@@ -302,16 +315,10 @@ h5, h6 {
     margin-top:220px;
 }
 
-.divRegistro {
-    background:green;
-    width:725px;
-    height:50px;
-}
-
 #myCarousel {
-    width:750px;
+    width:1000px;
     position:absolute;
-    top:202px;
+    top:212px;
 }
 
 #fieldProducts {
@@ -327,6 +334,18 @@ h5, h6 {
      -webkit-transform:rotate(350deg);
 }
 
+.divRegistro {
+    background:green;
+    width:725px;
+    height:50px;
+}
+
+.pLine {
+    padding-bottom:5px;
+    margin-bottom:5px;
+    border-bottom:#000 1px solid;
+    width:650px;
+}
 
 .divTitulo {
     border-radius:5px;
@@ -338,10 +357,17 @@ h5, h6 {
     font-family:'Times New Roman';   
 }
 
-#divRegistrarProducto {
-    border:1px solid #cccccc;
-    border-radius:10px;
-    width:720px;
+.big {
+    font-size:20px;
+}
+
+.divBorderSombreado section{
+    float:left;
+    margin:10px;
+}
+
+.divBorderSombreado p {
+    margin-left:15px;
 }
 
 #divImagen {
@@ -375,6 +401,18 @@ h5, h6 {
     min-height:500px;
     margin-left:390px;
     overflow:hidden;
+    border:1px solid #cccccc;
+    border-radius:10px;
+    width:720px;
+    background:white;
+}
+
+#divCategorias li {
+    background:white;
+}
+
+#divCuerpo section {
+    margin:10px;
 }
 
 #divCuerpo2 {
@@ -438,9 +476,26 @@ h5, h6 {
 }
 
 #divProgress4 {
-    width:50px;
-    height:10px;
-    margin-top:20px;
+    width: 50px;
+    height: 10px;
+    margin-top: 20px;
+}
+
+#divBusquedas {
+    padding:20px;
+    border:1px solid #cccccc;
+    height:230px;
+    border-radius:5px;
+    width:200px;
+    background-color:white;
+}
+
+#divBusRecientes {
+     border:1px solid #cccccc;
+     border-radius:5px; 
+     height:200px;
+     width:250px;
+     background-color:white;
 }
 
 #divProgress5 {
@@ -474,6 +529,7 @@ h5, h6 {
 .divSombreado {
     background-color:burlywood;
     border-radius:10px;
+    width:680px;
 }
 
 #divBlack {
@@ -804,9 +860,33 @@ label.checkbox {
    background:#d3dce0;
 }
 
+.tblDivsIzquierda {
+    position:absolute;
+    top:188px;
+}
+
+.divTitle {
+   width:230px;
+   min-height:20px;
+   word-wrap:break-word;
+}
+
 .divProduct {  
     width:230px;
     float:left;
+}
+
+.loadingMask {
+    width:100%;
+    height:100%;
+    background-color:rgba(86,86,86,0.3) !important;
+    position:fixed;
+    z-index:999999;
+    left:0;
+    top:0;
+    display:block;
+    background: no-repeat scroll url("/Images/loading.gif") center center;
+    display:none;
 }
 
 .divComentario h4{
@@ -816,6 +896,21 @@ label.checkbox {
 
 .divComentario label {
     margin-left:350px;
+}
+
+.divBlanco {
+    color:white;
+}
+
+.divInfo {
+    border:1px solid white;
+    width:355px;
+    height:205px;
+}
+
+.inputMoney {
+    width:30px;
+    height:20px;
 }
 
 .divComentario p {

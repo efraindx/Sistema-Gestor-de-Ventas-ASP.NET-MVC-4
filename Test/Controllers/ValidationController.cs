@@ -38,17 +38,5 @@ namespace Test.Controllers
                 return Json(Suggest, JsonRequestBehavior.AllowGet);
             }
         }
-        /*
-        public JsonResult Email_Available(string email)
-        {
-            string suggesttion = null;
-
-            if (db.People.Any(p => p.Email == email))
-            {
-                suggesttion = "Eset Email ya existe";
-            }
-
-            return Json(suggesttion, JsonRequestBehavior.AllowGet);
-        }*/
     }
 }

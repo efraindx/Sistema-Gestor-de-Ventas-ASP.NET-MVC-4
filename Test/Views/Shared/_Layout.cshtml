@@ -1,15 +1,18 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
     <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
         <link href="@Url.Content("~/Images/icono.png")" rel="shortcut icon" type="image/x-icon" />
-        <meta name="viewport" content="width=device-width" />
+       
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         @Styles.Render("~/Content/css")
-        @Scripts.Render("~/bundles/modernizr")
     </head>
     <body>
+        <div class="loadingMask" id="divLoading">
+
+        </div>
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
@@ -30,10 +33,10 @@
         <div id="body">
             <div class="navbar">
                  <div class="navbar-inner" id="barraNavegar">
-                     <form class="navbar-search pull-lef">
-                         <input type="text" placeholder="Buscar..." id="buscador"/>
-                         <input type="submit" value="Buscar" class="btn btn-info" id="btnBuscar"/>
-                     </form>
+                     <div class="navbar-search pull-lef">
+                          @Html.Partial("_SearchPartial")
+                     </div>
+                    
                         <ul class="nav" id="navBar">
                           <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
                           <li>@Html.ActionLink("Vender", "Index", "Product")</li>
@@ -46,23 +49,60 @@
 
             <section>
                 <div id="divCuerpo">
-                     @RenderBody()
+                    <section>
+                        @RenderBody()
+                    </section>
                 </div>
             </section>  
 
               <div class="container">
                 <div class="row">
-                    <div class="span3 bs-docs-sidebar" id="divCategorias">
-                        <ul class="nav nav-tabs nav-pills nav-stacked">
-                            <li class="active"><a href="#"><i class="icon-chevron-right"></i>Categorías</a></li>
-                            <li><a href="#aasd"><i class="icon-chevron-right"></i>Cremas</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>Perfumes</a></li> 
-                            <li><a href="#"><i class="icon-chevron-right"></i>Desodorantes</a></li>
-                            <li><a href="#"><i class="icon-chevron-right"></i>Shampoo</a></li>
-                        </ul>
-                    </div>
+                       <table class="tblDivsIzquierda">
+                            <tr>
+                                <td>
+                                     <div class="span3 bs-docs-sidebar" id="divCategorias">
+                                        <ul class="nav nav-tabs nav-pills nav-stacked">
+                                            <li class="active"><a href="#"><i class="icon-chevron-right"></i>Categorías</a></li>
+                                            <li><a href="#aasd"><i class="icon-chevron-right"></i>Cremas</a></li>
+                                            <li><a href="#"><i class="icon-chevron-right"></i>Perfumes</a></li> 
+                                            <li><a href="#"><i class="icon-chevron-right"></i>Desodorantes</a></li>
+                                            <li><a href="#"><i class="icon-chevron-right"></i>Shampoo</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                             <tr>
+                                  <td>
+                                       <div id="divBusquedas">
+                                           <p><b>
+                                              Busquedas Avanzadas
+                                          </b> </p>
+                                           <b>Condición:</b><br />
+                                           <input type="checkbox" />Nuevo<br />
+                                           <input type="checkbox" />Usado<br />
+                                           <input type="checkbox" />Medio-Uso
+                                           <p><br />
+                                               <b>Precio:</b>
+                                           </p>
+                                                   $
+                                                 <input class="inputMoney" type="text" />
+                                                  a $
+                                                 <input class="inputMoney" type="text" />
+                                       </div>
+                                   </td>
+                           </tr>
+                           <tr>
+                               <td>
+                                   <div id="divBusRecientes">
+                                       <p>
+                                           Busquedas recientes
+                                       </p>
+                                   </div>
+                               </td>
+                           </tr>
+                    </table>
                 </div>
-            </div>
+             </div>
         </div>
 
         <footer>
@@ -73,7 +113,12 @@
             </div>
         </footer>
         @Scripts.Render("~/bundles/jquery")
+         @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jqueryval")
         @RenderSection("scripts", required: false)
+         <script src="~/Scripts/jquery.signalR-2.0.0.min.js"></script>
+        <script src="~/Scripts/jquery.signalR-2.0.0.js"></script>
+        <script src="~/signalr/hubs"></script>
         <script>
             $('.carousel').carousel({
                 interval: 2000,
@@ -90,10 +135,40 @@
                 target: 'body'
             });
 
-            $('#body').localScroll({
-                target: 'body'
+            $("#buscador").typeahead({
+                source: function (term, process) {
+                    states = [];
+                    var url = '@Url.Content("~/Home/FindWordInDB")';
+
+                    return $.getJSON(url, { filter: term }, function (data) {
+                        $.each(data, function(i, state) {
+                            states.push(state.Title);
+                        });
+                        return process(states);
+                    })
+                },
+
+                updater: function (obj) {
+                    var form = $("#formSearch");
+                    form.submit();
+                    return obj;
+                }
             });
-            
+
+            $(document).ready(function () {
+                var proxy = $.connection.notificationHub;
+                $("#btnEnviar").click(function () {
+                    proxy.server.sendNotifications("Este mensaje");
+                    $('#test').html("Esto es un append");
+                });
+
+                $.connection.hub.start();
+
+                $().UItopTop({
+                    easingType: 'easeOutQuart'
+                });
+            });
+
         </script>
     </body>
 </html>

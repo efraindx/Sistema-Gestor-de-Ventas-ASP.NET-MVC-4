@@ -13,10 +13,16 @@ namespace Test
                          "~/Scripts/jquery-{version}.min.js",
                         "~/Scripts/jquery.scrollTo-1.4.2-min.js",
                         "~/Scripts/jquery.localscroll-1.2.7-min.js",
+                        "~/Scripts/bootstrap-typeahead.js",
                         "~/Scripts/bootstrap-tooltip.js",
                         "~/Scripts/bootstrap-popover.js",
                         "~/Scripts/bootstrap.js",
-                        "~/Scripts/bootstrap.min.js"));
+                        "~/Scripts/bootstrap.min.js",
+                        "~/Scripts/jquery.signalR-2.0.0.js",
+                        "~/Scripts/jquery.signalR-2.0.0.min.js",
+                        "~/signalr/hubs",
+                        "~/Scripts/easing.js",
+                        "~/Scripts/jquery.ui.totop.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));

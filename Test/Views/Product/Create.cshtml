@@ -4,11 +4,9 @@
     ViewBag.Title = "Agregar Artículo - De´ Compras NET";
 }
 
-<div id="divRegistrarProducto">
-
-    <div class="divSombreado">
-        <h2 class="h2">Agregar nuevo producto</h2>
-    </div>
+ <div class="divSombreado">
+        <h2>Agregar nuevo producto</h2>
+ </div>
 
 @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
@@ -104,16 +102,21 @@
         </div>
 
         <p>
-            <input class="btn btn-warning" type="submit" value="Agregar" />
+            <input id="btnEnviar" class="btn btn-warning" type="submit" value="Agregar" />
         </p>
     </fieldset>
 }
 
+<div>
+    @Html.ActionLink("Ver productos", "Index", new { @class = "btn btn-primary"})
 </div>
 
-<div>
-    @Html.ActionLink("Ver productos", "Index")
-</div>
+<script type="text/javascript">
+  
+
+  
+
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

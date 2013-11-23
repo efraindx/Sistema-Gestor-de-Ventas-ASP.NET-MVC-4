@@ -67,11 +67,41 @@
         {
             Test.Models.Image ActualImage = images.Where(i => i.ProductID == product.ProductID).FirstOrDefault();
             <div class="divProduct">
-                @product.Title
                     <div class="divImagen">
-                        <img src="@ActualImage.ImagePath" />
+                         <a href="@Url.Action("Create", "Comment", new { ProductID = product.ProductID }, null)">
+                            <img src="@ActualImage.ImagePath" />
+                         </a>
                     </div>
-                @product.Price
+                    <div class="divDetalles">
+                       <p class="precio">$@product.Price</p>
+                    </div>
+                 <div class="divBlanco">&acute;</div>
             </div>
         }
     </div>
+
+<script type="text/javascript">
+
+    $(function () {
+        var proxy = $.connection.notificationHub;
+        proxy.client.receiveNotification = function (message) {
+            $("#divContenedor").append(message);
+            $("#divContenedor").slideDown(2000);
+            setTimeout('(#divContenedor).slideUp(2000);', 5000);
+        };
+        $.connection.hub.start();
+    });
+
+</script>
+@*
+@Ajax.ActionLink("Mostrar Ajax", "MostrarResultado", 
+                                new AjaxOptions {
+                                    HttpMethod = "Post",
+                                    LoadingElementId = "divLoading",
+                                    OnSuccess = "alert('Se ha completado')",
+                                    InsertionMode = InsertionMode.Replace, 
+                                    UpdateTargetId = "divResult" });
+
+<div id="divResult">
+    Resultados:
+</div>*@

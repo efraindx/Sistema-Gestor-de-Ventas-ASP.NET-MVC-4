@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Threading;
 using System.Web.Mvc;
 using Test.Models;
 
@@ -47,9 +48,56 @@ namespace Test.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public ActionResult Test()
+        [HttpPost]
+        public ActionResult ViewResults(string filter)
         {
-            return View();
+
+            var products = from p in db.Products
+                           select p;
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                products = products.Where(p => p.Title.ToUpper().Contains(filter.ToUpper()) 
+                                                || p.Description.ToUpper().Contains(filter.ToUpper()));
+            }
+            ViewBag.filter = filter;
+            return View(products.ToList());
+        }
+
+        [OutputCache(Duration = 30)]
+        public PartialViewResult MostrarResultado()
+        {
+            Thread.Sleep(2000);
+            ViewBag.ServerTime = DateTime.Now;
+
+            return PartialView(new List<Persona>() 
+            { 
+                new Persona{ Nombre = "Efrain", Apellido = "Toribio"}, 
+                new Persona { Nombre ="Otro", Apellido = "NUEvo"}, 
+                new Persona {Nombre = "JAJAJ", Apellido = "Jimenez"}
+            });
+        }
+
+        [HttpGet]
+        public JsonResult FindWordInDB(string filter)
+        {
+
+            var products = from p in db.Products
+                           select p;
+
+            Product[] valuesReturn = null;
+
+            if (!String.IsNullOrEmpty(filter))
+            {
+                valuesReturn = products.Where(p => p.Title.ToUpper().Contains(filter.ToUpper())).ToArray();
+            }
+
+            return new JsonResult()
+            {
+                Data = valuesReturn,
+                JsonRequestBehavior = JsonRequestBehavior.AllowGet
+            };
+           
         }
     }
 }

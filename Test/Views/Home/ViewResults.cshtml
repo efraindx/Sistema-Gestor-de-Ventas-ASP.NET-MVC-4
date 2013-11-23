@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Resultados";
+    Test.Models.TestContext db = new Test.Models.TestContext();
+    var images = db.Images.ToList();
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div class="divBorderSombreado">
+        <div class="divSombreado">
+            <h2 class="h2">Resultados de Búsqueda</h2>
+        </div>
+            @if(Model.Count != 0) 
+            {
+                 if(Model.Count == 1) {
+                    <p class="pLine"><b>@Model.Count</b> resultado para <b>@ViewBag.filter</b></p>
+                 }
+                 else
+                 {
+                    <p class="pLine">@Model.Count resultados para <b>@ViewBag.filter</b></p>
+                 }
+                 
+                 <div>
+                     Ordenar por: <select>
+                                        <option>Nombre</option>
+                                  </select>
+                 </div>
+                  
+                  foreach (var product in Model) 
+                  {
+                        Test.Models.Image ActualImage = images.Where(i => i.ProductID == product.ProductID).FirstOrDefault();
+                      
+                            <section>
+                                    <div class="divImagen">
+                                         <a href="@Url.Action("Create", "Comment", new { ProductID = product.ProductID }, null)">
+                                            <img src="@ActualImage.ImagePath" />
+                                         </a>
+                                    </div>
+                            </section>
+                            <section>
+                                  <div class="divInfo">
+                                      <div class="divTitle">
+                                          <b><a href="@Url.Action("Create", "Comment", new { ProductID = product.ProductID }, null)">@product.Title</a></b>
+                                      </div>
+                                      <br />
+                                      <div>
+                                        <p class="precio">$@product.Price</p>
+                                      </div>
+                                  </div>
+                            </section>
+                  }
+            } 
+            else 
+            {
+                <p>
+                    No se han encontrado resultados.
+                </p>  
+            }
+    </div>
+</body>
+</html>

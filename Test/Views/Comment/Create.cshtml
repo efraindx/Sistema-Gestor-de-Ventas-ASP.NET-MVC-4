@@ -1,5 +1,6 @@
 ﻿@model Test.Models.ProductReview
 
+
 @{
     ViewBag.Title = "Detalles Producto";
     
@@ -7,11 +8,11 @@
     Test.Models.TestContext db = new Test.Models.TestContext();
     var Last3Comments = db.ProductsReviews.OrderByDescending(p => p.Id).Take(3).ToList();
     double countComments = db.ProductsReviews.Where(p => p.ProductID == productID).Count();
-    int countRating20 = db.ProductsReviews.Where(p => p.Rating == 20).GroupBy(p => p.User).Count();
-    int countRating16 = db.ProductsReviews.Where(p => p.Rating == 16).GroupBy(p => p.User).Count();
-    int countRating12 = db.ProductsReviews.Where(p => p.Rating == 12).GroupBy(p => p.User).Count();
-    int countRating8 = db.ProductsReviews.Where(p => p.Rating == 8).GroupBy(p => p.User).Count();
-    int countRating4 = db.ProductsReviews.Where(p => p.Rating == 4).GroupBy(p => p.User).Count();
+    int countRating20 = db.ProductsReviews.Where(p => p.Rating == 20 && p.ProductID == productID).GroupBy(p => p.User).Count();
+    int countRating16 = db.ProductsReviews.Where(p => p.Rating == 16 && p.ProductID == productID).GroupBy(p => p.User).Count();
+    int countRating12 = db.ProductsReviews.Where(p => p.Rating == 12 && p.ProductID == productID).GroupBy(p => p.User).Count();
+    int countRating8 = db.ProductsReviews.Where(p => p.Rating == 8 && p.ProductID == productID).GroupBy(p => p.User).Count();
+    int countRating4 = db.ProductsReviews.Where(p => p.Rating == 4 && p.ProductID == productID).GroupBy(p => p.User).Count();
 
     int totalRatings = countRating20 + countRating16 + countRating12 + countRating8 + countRating4;
     
@@ -40,8 +41,16 @@
     string val5 = Convert.ToString(value5).Replace(",", ".");
     string FiveProgress = "width:" + val5 + "%";
 
-    double ratingProduct = ((countRating20 * 20) + (countRating16 * 16) + (countRating12 * 12) + (countRating8 * 8) +
+    double ratingProduct = 1;
+    
+    if(totalRatings > 0) {
+        ratingProduct = ((countRating20 * 20) + (countRating16 * 16) + (countRating12 * 12) + (countRating8 * 8) +
         (countRating4 * 4)) / totalRatings;
+    } else {
+        ratingProduct = ((countRating20 * 20) + (countRating16 * 16) + (countRating12 * 12) + (countRating8 * 8) +
+        (countRating4 * 4));
+    }
+    
     double rating = Math.Round(ratingProduct, 2);
     }
 
@@ -49,9 +58,11 @@
 <script type="text/javascript" src="~/Scripts/jquery.js"></script>
 <script type="text/javascript" src="~/Scripts/jRating.jquery.js"></script>
 
-<div id="divComprar">
-   @Html.Partial("_ShopPartial")
-</div>
+@if(User.Identity.Name != ViewBag.Product.Owner) {
+    <div id="divComprar">
+       @Html.Partial("_ShopPartial")
+    </div>
+}
 
 @using (Html.BeginForm())
 {
@@ -71,7 +82,6 @@
     <legend>Product</legend>
     <div class="divImagen">
         <img src="@ViewBag.ImageProduct.ImagePath" />
-        
     </div>
 
     <div id="divInfo">
@@ -219,7 +229,7 @@
             <div><br />
                 <label>Cómo calificas este producto?</label>
                 <div class="basic" data-average="4"></div><br />
-                <input type="text" id="rating" name="rating" />
+                <input type="text" value="4" id="rating" name="rating" />
             </div>
         <p>
             <input class="btn btn-success" type="submit" value="Comentar" />
