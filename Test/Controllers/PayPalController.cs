@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Configuration;
 using System.Web;
+using System.Diagnostics;
 using Test.Models;
 using System.Web.Mvc;
+using Test.ViewModels;
 
 namespace Test.Controllers
 {
@@ -28,14 +30,18 @@ namespace Test.Controllers
             return View();
         }
 
-        public ActionResult ValidateCommand(string product, string totalPrice)
+        public ActionResult ValidateCommand()
         {
-            bool useSandbox = Convert.ToBoolean(ConfigurationManager.AppSettings["IsSandbox"]);
-            var paypal = new PayPalModel(useSandbox);
+            var cart = ShoppingCart.GetCart(this.HttpContext);
 
-            paypal.item_name = product;
-            paypal.amount = totalPrice;
-            return View(paypal);
+            //Set up the ViewModel
+            var viewModel = new ShoppingCartViewModel
+            {
+                CartItems = cart.GetCartItems(),
+                CartTotal = Convert.ToDecimal(cart.GetTotal())
+            };
+
+            return View(viewModel);
         }
 
     }

@@ -199,6 +199,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PayPalController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\ValidationController.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,19 +297,24 @@
     <Compile Include="Migrations\201310301635590_m22.Designer.cs">
       <DependentUpon>201310301635590_m22.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201312031405378_m23.cs" />
+    <Compile Include="Migrations\201312031405378_m23.Designer.cs">
+      <DependentUpon>201312031405378_m23.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\EmailModels.cs" />
     <Compile Include="Models\HubNotification.cs" />
-    <Compile Include="Models\PayPalModel.cs" />
     <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\ProductCondition.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ProductReview.cs" />
-    <Compile Include="Models\Validator.cs" />
+    <Compile Include="Models\ShoppingCartModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ShoppingCartRemoveViewModel.cs" />
+    <Compile Include="ViewModels\ShoppingCartViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-responsive.css" />
@@ -396,6 +402,7 @@
     <Content Include="Scripts\jquery-1.7.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.js" />
     <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.dotdotdot.min.js" />
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.localscroll-1.2.7-min.js" />
     <Content Include="Scripts\jquery.scrollTo-1.4.2-min.js" />
@@ -453,13 +460,11 @@
     <Content Include="Views\Comment\Delete.cshtml" />
     <Content Include="Views\Home\Suggest.cshtml" />
     <Content Include="Views\PayPal\ValidateCommand.cshtml" />
-    <Content Include="Views\PayPal\RedirectFromPayPal.cshtml" />
-    <Content Include="Views\PayPal\CancelFromPayPal.cshtml" />
-    <Content Include="Views\PayPal\NotityFromPayPal.cshtml" />
     <Content Include="Views\Shared\_ShopPartial.cshtml" />
     <Content Include="Views\Shared\_SearchPartial.cshtml" />
     <Content Include="Views\Home\ViewResults.cshtml" />
     <Content Include="Views\Home\MostrarResultado.cshtml" />
+    <Content Include="Views\ShoppingCart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -536,6 +541,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201310301635590_m22.resx">
       <DependentUpon>201310301635590_m22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201312031405378_m23.resx">
+      <DependentUpon>201312031405378_m23.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

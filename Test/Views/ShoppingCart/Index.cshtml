@@ -1,0 +1,111 @@
+﻿@model Test.ViewModels.ShoppingCartViewModel
+
+@{
+    ViewBag.Title = "Carro de Compras";
+}
+
+<script>
+    $(function () {
+
+        $(".RemoveLink").click(function () {
+            var recordToDelete = $(this).attr("data-id");
+
+            if (recordToDelete != '') {
+                
+                //Ajax Post
+                $.post("/ShoppingCart/RemoveFromCart", { "id": recordToDelete },
+                    function (data) {
+                        //Succesfull request
+                        //Update the view
+                        if (data.ItemCount == 0) {
+                            $('#row-' + data.DeleteId).fadeOut('slow');
+                        } else {
+                            $('#item-count-' + data.DeleteId).text(data.ItemCount);
+                        }
+
+                        $('#cart-total').text(data.CartTotal);
+                        $('#update-message').text(data.Message);
+                        $('#cart-status').text('Cart (' + data.CartCount + ')');
+                    });
+            }   
+        });
+
+    });
+
+        function handleUpdate() {
+            //Load and deserialize the JSON data
+            var json = context.get_data();
+            var data = Sys.Serialization.JavaScriptSerializer.deserialize(json);
+
+            //Update the page elements
+            if (data.ItemCount == 0) {
+                $('#row-' + data.DeleteId).fadeOut('slow');
+            } else {
+                $('#item-count' + data.DeleteId).text(data.ItemCount);
+            }
+
+            $('#cart-total').text(data.CartTotal);
+            $('#update-message').text(data.Message);
+            $('#cart-status').text('Cart (' + data.CartCount + ')');
+        }
+</script>
+
+<h3>
+    <em>Resumen</em> de tu carrito:
+</h3>
+
+<p>
+    @Html.ActionLink(" ", "ValidateCommand", "PayPal", new { cart = Model }, new
+{
+    style = " background:url(https://www.sandbox.paypal.com/es_ES/ES/i/btn/btn_buynowCC_LG.gif) no-repeat center; display:block; height:50px; width:150px; "
+})
+</p>
+
+<div id="update-message">
+</div>
+
+<table class="table table-striped">
+    <tr>
+       <th>
+           Nombre Producto
+       </th>
+        <th>
+            Precio (cada)
+        </th>
+        <th>
+            Cantidad
+        </th>
+        <th></th>
+    </tr>
+
+       @foreach (var item in Model.CartItems)
+        { 
+            <tr id="row-@item.RecordId">
+                <td>
+                    @Html.ActionLink(item.Product.Title, "Details", "Product", new { id = item.ProductId })
+                </td>
+                <td>
+                    RD$@item.Product.Price
+                </td>
+                <td id="item-count-@item.RecordId">
+                    @item.Count
+                </td>
+                <td>
+                    <a href="#" class="RemoveLink" data-id="@item.RecordId">Eliminar del carro</a>
+                </td>
+            </tr>
+        }
+    <tr>
+        <td>
+            Total
+        </td>
+        <td>
+        </td>
+        <td>
+        </td>
+        <td id="cart-total">
+            <b>RD$@Model.CartTotal</b>
+        </td>
+    </tr>
+</table>
+

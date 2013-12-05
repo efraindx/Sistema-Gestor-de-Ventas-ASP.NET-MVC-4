@@ -22,6 +22,9 @@ namespace Test.Models
         public DbSet<ProductCondition> ProductsConditions { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<ProductReview> ProductsReviews { get; set; }
+        public DbSet<Cart> Carts { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
     }
 
     [Table("UserProfile")]

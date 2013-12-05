@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Threading;
 using System.Web.Mvc;
+using Microsoft.AspNet.SignalR;
 using Test.Models;
 
 namespace Test.Controllers
@@ -81,7 +82,6 @@ namespace Test.Controllers
         [HttpGet]
         public JsonResult FindWordInDB(string filter)
         {
-
             var products = from p in db.Products
                            select p;
 
@@ -99,5 +99,10 @@ namespace Test.Controllers
             };
            
         }
+
+      /*  void SendMessage(string message)
+        {
+            GlobalHost.ConnectionManager.GetHubContext<HubNotification>().Clients.es
+        }*/
     }
 }

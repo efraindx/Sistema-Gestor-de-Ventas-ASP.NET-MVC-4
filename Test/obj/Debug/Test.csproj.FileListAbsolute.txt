@@ -165,3 +165,4 @@ C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\bin\We
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\bin\SignalR.xml
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\bin\SignalR.Hosting.AspNet.xml
 C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\bin\SignalR.Hosting.Common.xml
+C:\Users\Efrain\Documents\Visual Studio 2012\Projects\GestorDeVentas\Test\obj\Debug\MarketPlace.Migrations.m23.resources

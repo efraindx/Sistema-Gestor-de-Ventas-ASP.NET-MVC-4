@@ -22,20 +22,25 @@ namespace Test
                         "~/Scripts/jquery.signalR-2.0.0.min.js",
                         "~/signalr/hubs",
                         "~/Scripts/easing.js",
-                        "~/Scripts/jquery.ui.totop.js"));
+                        "~/Scripts/jquery.ui.totop.js",
+                        "~/Scripts/jquery.dotdotdot.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/jRating").Include("~/Scripts/jRating.jquery.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.unobtrusive*",
                         "~/Scripts/jquery.validate*"));
+            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
+                    "~/Scripts/modernizr-*"));
 
             // Utilice la versión de desarrollo de Modernizr para desarrollar y obtener información sobre los formularios. De este modo, estará
             // preparado para la producción y podrá utilizar la herramienta de creación disponible en http://modernizr.com para seleccionar solo las pruebas que necesite.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
 
+            bundles.Add(new StyleBundle("~/bundles/jRating/css").Include("~/Content/jRating.jquery.css"));
+            
             bundles.Add(new StyleBundle("~/Content/css").Include(
                                         "~/Content/site.css",
                                         "~/Content/bootstrap.css",

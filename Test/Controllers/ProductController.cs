@@ -123,14 +123,16 @@ namespace MarketPlace.Controllers
         [HttpPost]
         public ActionResult Edit(Product product)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                Product originalProduct = db.Products.Where(p => p.ProductID == product.ProductID).First();
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
             ViewBag.CategoryID = new SelectList(db.Categories, "CategoryID", "Name", product.CategoryID);
             ViewBag.ProductConditionID = new SelectList(db.ProductsConditions, "ProductConditionID", "Name", product.ProductConditionID);
+           
+            
             return View(product);
         }
 

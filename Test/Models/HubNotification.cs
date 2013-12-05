@@ -8,6 +8,7 @@ namespace Test.Models
 {
     public class HubNotification : Hub
     {
+
         public void Hello()
         {
             Clients.All.hello();

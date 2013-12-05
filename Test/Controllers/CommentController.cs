@@ -35,6 +35,11 @@ namespace MarketPlace.Controllers
             return View(productreview);
         }
 
+        public ActionResult PayPal() 
+        {
+            return View();
+        }
+
         //
         // GET: /Comment/Create
 

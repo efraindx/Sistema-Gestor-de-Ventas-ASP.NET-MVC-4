@@ -5,14 +5,16 @@
         <meta charset="utf-8" />
         <title>@ViewBag.Title</title>
         <link href="@Url.Content("~/Images/icono.png")" rel="shortcut icon" type="image/x-icon" />
-       
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+       
         @Styles.Render("~/Content/css")
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/modernizr")
+        @Scripts.Render("~/bundles/jqueryval")
+        @RenderSection("scripts", required: false)
+        @RenderSection("styles", required:false)
     </head>
     <body>
-        <div class="loadingMask" id="divLoading">
-
-        </div>
         <header>
             <div class="content-wrapper">
                 <div class="float-left">
@@ -75,7 +77,7 @@
                                   <td>
                                        <div id="divBusquedas">
                                            <p><b>
-                                              Busquedas Avanzadas
+                                              Búsquedas Avanzadas
                                           </b> </p>
                                            <b>Condición:</b><br />
                                            <input type="checkbox" />Nuevo<br />
@@ -95,7 +97,7 @@
                                <td>
                                    <div id="divBusRecientes">
                                        <p>
-                                           Busquedas recientes
+                                           Búsquedas recientes
                                        </p>
                                    </div>
                                </td>
@@ -112,29 +114,17 @@
                 </div>
             </div>
         </footer>
-        @Scripts.Render("~/bundles/jquery")
-         @Scripts.Render("~/bundles/modernizr")
-        @Scripts.Render("~/bundles/jqueryval")
-        @RenderSection("scripts", required: false)
-         <script src="~/Scripts/jquery.signalR-2.0.0.min.js"></script>
+       
+        <script src="~/Scripts/jquery.signalR-2.0.0.min.js"></script>
         <script src="~/Scripts/jquery.signalR-2.0.0.js"></script>
         <script src="~/signalr/hubs"></script>
+
         <script>
             $('.carousel').carousel({
                 interval: 2000,
                 pause: false
             });
-
-            $('#divInfo').hide('fast');
-
-            $('.basic3').mouseover(function () {
-                $('#divInfo').show(2000);
-            });
-
-            $('#divInfo').localScroll({
-                target: 'body'
-            });
-
+         
             $("#buscador").typeahead({
                 source: function (term, process) {
                     states = [];
@@ -168,6 +158,16 @@
                     easingType: 'easeOutQuart'
                 });
             });
+
+            $(".divImagen").mouseover(function () {
+                $(this).children(".divProductTitle").prop("class", "divProductTitle2");
+            });
+
+            $(".divImagen").mouseout(function () {
+                $(".divProductTitle2").prop("class", "divProductTitle");
+            });
+
+            $(".divProductTitle").dotdotdot();
 
         </script>
     </body>

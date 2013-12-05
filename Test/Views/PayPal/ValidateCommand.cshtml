@@ -1,16 +1,43 @@
-﻿@model Test.Models.PayPalModel
+﻿@model Test.ViewModels.ShoppingCartViewModel
+
+  @{
+      bool isSandbox = Convert.ToBoolean(System.Configuration.ConfigurationManager.AppSettings.Get("isSandbox"));
+
+      string url = "";
+      
+      if(isSandbox)
+      {
+          url = System.Configuration.ConfigurationManager.AppSettings.Get("test_url");
+      }
+      else
+      {
+          url = System.Configuration.ConfigurationManager.AppSettings.Get("Prod_url");
+      }
+   }
 
 <body>
-   <form action="@Model.actionURL">
-       @Html.HiddenFor(m => m.cmd)
-       @Html.HiddenFor(m => m.business)
-       @Html.HiddenFor(m => m.no_shipping)
-       @Html.HiddenFor(m => m.@return)
-       @Html.HiddenFor(m => m.cancel_return)
-       @Html.HiddenFor(m => m.notify_url)
-       @Html.HiddenFor(m => m.currency_code)
-       @Html.HiddenFor(m => m.item_name)
-       @Html.HiddenFor(m => m.amount)
+
+  
+
+   <form action="@url" method="post">
+
+       @Html.Hidden("business", System.Configuration.ConfigurationManager.AppSettings.Get("business"))
+       @Html.Hidden("cmd", System.Configuration.ConfigurationManager.AppSettings.Get("cmd"))
+       @Html.Hidden("upload", System.Configuration.ConfigurationManager.AppSettings.Get("upload"))
+       @Html.Hidden("taxt_cart", System.Configuration.ConfigurationManager.AppSettings.Get("taxt_cart"))
+       @Html.Hidden("rm", System.Configuration.ConfigurationManager.AppSettings.Get("rm"))
+       
+       @foreach (var x in Model.CartItems.Select((value, index) => new { value, index }))
+       {
+           var index = x.index + 1;
+           var price = x.value.Product.Price / 42;
+           @Html.Hidden("item_name_" + index, x.value.Product.Title)
+           @Html.Hidden("quantity_" + index,  x.value.Count)
+           @Html.Hidden("amount_" + index, "56")
+       }
+
+       @Html.Hidden("return", System.Configuration.ConfigurationManager.AppSettings.Get("return"))
+
    </form>
 
                 <h3>
@@ -22,6 +49,6 @@
 <script type="text/javascript">
     $(this.document).ready(function () {
         var form = $("form");
-        form.submit();
+      //  form.submit();
     });
 </script>

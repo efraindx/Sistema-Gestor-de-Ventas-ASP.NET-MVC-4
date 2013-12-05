@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<h2>@Model.Title</h2>
 
 @using (Html.BeginForm()) {
     @Html.ValidationSummary(true)
@@ -15,7 +15,7 @@
         @Html.HiddenFor(model => model.ProductID)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.CategoryID, "Category")
+            @Html.LabelFor(model => model.CategoryID, "Categoría")
         </div>
         <div class="editor-field">
             @Html.DropDownList("CategoryID", String.Empty)
@@ -23,7 +23,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.ProductConditionID, "ProductCondition")
+            @Html.LabelFor(model => model.ProductConditionID, "Condición producto")
         </div>
         <div class="editor-field">
             @Html.DropDownList("ProductConditionID", String.Empty)
@@ -31,7 +31,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Title)
+            @Html.LabelFor(model => model.Title, "Título")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Title)
@@ -39,7 +39,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.Description)
+            @Html.LabelFor(model => model.Description, "Descripción")
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.Description)
@@ -50,12 +50,12 @@
             @Html.LabelFor(model => model.Price)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Price)
+            @Html.EditorFor(model => model.Price, "Precio")
             @Html.ValidationMessageFor(model => model.Price)
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input class="btn btn-primary" type="submit" value="Save" />
         </p>
     </fieldset>
 }

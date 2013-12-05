@@ -23,6 +23,7 @@ namespace Test
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            RouteTable.Routes.MapHubs();
         }
     }
 }

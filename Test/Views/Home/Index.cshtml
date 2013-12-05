@@ -68,6 +68,7 @@
             Test.Models.Image ActualImage = images.Where(i => i.ProductID == product.ProductID).FirstOrDefault();
             <div class="divProduct">
                     <div class="divImagen">
+                         <div class="divProductTitle"><label>@product.Title</label></div>
                          <a href="@Url.Action("Create", "Comment", new { ProductID = product.ProductID }, null)">
                             <img src="@ActualImage.ImagePath" />
                          </a>
@@ -89,14 +90,16 @@
             $("#divContenedor").slideDown(2000);
             setTimeout('(#divContenedor).slideUp(2000);', 5000);
         };
-        $.connection.hub.start();
+        $.
+            connection.hub.start();
+
     });
 
 </script>
 @*
 @Ajax.ActionLink("Mostrar Ajax", "MostrarResultado", 
                                 new AjaxOptions {
-                                    HttpMethod = "Post",
+                                    HttpMethod = "Post",    
                                     LoadingElementId = "divLoading",
                                     OnSuccess = "alert('Se ha completado')",
                                     InsertionMode = InsertionMode.Replace, 
